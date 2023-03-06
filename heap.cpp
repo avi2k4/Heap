@@ -11,6 +11,9 @@ heap::heap(int * array, int size) {
     	}
 }
 
+/*
+ * Removes the root (largest) by replacing with the last element and calling the heapify function to adjust the structure.
+ */
 void heap::removeAndPrintLargest() {
 	std::cout << "Removed element: " << this->array[0] << std::endl;
 
@@ -20,12 +23,18 @@ void heap::removeAndPrintLargest() {
 	this->heapify(0);
 }
 
+/*
+ * Removes all elements from the heap and prints them out.
+ */
 void heap::removeAndPrintAll() {
 	while (this->size != 0) {
 		this->removeAndPrintLargest();
 	}
 }
 
+/*
+ * Prints the heap sideways. Starts with the right wing of the root then does the left.
+ */
 void heap::print(int index, int spacing) {
 	if (this->size == 0) {
 		std::cout << "The heap is empty!" << std::endl;
@@ -46,6 +55,9 @@ void heap::print(int index, int spacing) {
 	}
 }
 
+/*
+ * Swaps and recurses to form correct max heap structure.
+ */
 void heap::heapify(int index) {
 	int temp = index;
 
@@ -64,14 +76,23 @@ void heap::heapify(int index) {
 	}
 }
 
+/*
+ * Returns the index of the left leaf of the node at the given index.
+ */
 int heap::getLeft(int index) {
 	return index * 2 + 1;
 }
 
+/*
+ * Returns the index of the right leaf of the node at the given index.
+ */
 int heap::getRight(int index) {
 	return index * 2 + 2;
 }
 
+/*
+ * Returns the index of the parent of the node at the given index.
+ */
 int heap::getParent(int index) {
 	return (index - 1) / 2;
 }
