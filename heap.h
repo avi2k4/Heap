@@ -8,7 +8,7 @@ class heap {
 
 		void removeAndPrintLargest();
 		void removeAndPrintAll();
-		void print();
+		void print(int index = 0, int spacing = 3);
 		
 	private:
 		int * array;

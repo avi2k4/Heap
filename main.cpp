@@ -1,3 +1,7 @@
+/*
+ * Max heap implementation in C++ by Avighnash Kumar, 3/5/23
+ */
+
 #include <iostream>
 #include <cstring>
 #include <fstream>

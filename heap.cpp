@@ -12,19 +12,37 @@ heap::heap(int * array, int size) {
 }
 
 void heap::removeAndPrintLargest() {
-	int largest = 123;
+	std::cout << "Removed element: " << this->array[0] << std::endl;
 
-	std::cout << "Removed largest element: " << largest << std::endl;
+	this->array[0] = this->array[this->size - 1];
+	this->size = this->size - 1;
+
+	this->heapify(0);
 }
 
 void heap::removeAndPrintAll() {
-
+	while (this->size != 0) {
+		this->removeAndPrintLargest();
+	}
 }
 
-void heap::print() {
-	std::cout << "Your max heap:" << std::endl;
-	for (int i = 0; i < this->size; i++) {
-		std::cout << this->array[i] << std::endl;
+void heap::print(int index, int spacing) {
+	if (this->size == 0) {
+		std::cout << "The heap is empty!" << std::endl;
+	}
+	else if (index > this-> size || this->array[index] == 0) {
+		return;
+	}
+	else {
+		this->print(this->getRight(index), spacing + 3);
+
+		std::cout << std::endl;
+		for (int i = 0; i < spacing; i++) {
+			std::cout << " ";
+		}
+		std::cout << this->array[index] << std::endl;
+		
+		this->print(this->getLeft(index), spacing + 3);
 	}
 }
 
@@ -46,10 +64,6 @@ void heap::heapify(int index) {
 	}
 }
 
-int heap::getRoot() {
-	return this->array[0];
-}
-
 int heap::getLeft(int index) {
 	return index * 2 + 1;
 }
@@ -61,5 +75,3 @@ int heap::getRight(int index) {
 int heap::getParent(int index) {
 	return (index - 1) / 2;
 }
-
-
